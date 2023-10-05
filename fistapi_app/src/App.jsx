@@ -11,7 +11,7 @@ function App() {
 		});
 	};
 	return (
-		<div>
+		<div className="lessonApp stack-large">
 			<div>ここに処理を書いていきます</div>
 			{data ? <div>{data.Hello}</div> : <button onClick={GetData}>データを取得</button>}
 		</div>
