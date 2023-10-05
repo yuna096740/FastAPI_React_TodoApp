@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import Footer from "./compornents/Footer/footter";
+import Navbar from "./compornents/Navbar/nav";
 
 function App() {
 	const [data, setData] = React.useState();
@@ -12,8 +14,10 @@ function App() {
 	};
 	return (
 		<div className="lessonApp stack-large">
-			<div>ここに処理を書いていきます</div>
-			{data ? <div>{data.Hello}</div> : <button onClick={GetData}>データを取得</button>}
+      <Navbar />
+        <div>ここに処理を書いていきます</div>
+        {data ? <div>{data.Hello}</div> : <button onClick={GetData}>データを取得</button>}
+      <Footer />
 		</div>
 	);
 }

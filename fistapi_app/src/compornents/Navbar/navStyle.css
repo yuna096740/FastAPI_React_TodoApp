@@ -1,0 +1,35 @@
+.nav ul {
+  width: 80%;
+  display: flex;
+  list-style: none;
+  margin: 0 auto;
+  height: 60px;
+}
+
+.nav li {
+  text-decoration: none;
+  color: #666;
+  padding: 30px 10px;
+  display: block;
+  font-size: large;
+}
+
+.nav a:hover {
+  color: #aaa;
+}
+
+@media screen and (max-width: 640px) {
+  .nav {
+    background-color: #0183a0;
+    height: 150px;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .nav li {
+    border-bottom: solid 1px #fff;
+  }
+}
