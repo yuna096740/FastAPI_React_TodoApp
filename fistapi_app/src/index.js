@@ -4,10 +4,17 @@ import './index.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
+const DATA = [
+  { id: "todo-0", name: "FistAPI", completed: true },
+  { id: "todo-1", name: "React", completed: false },
+  { id: "todo-2", name: "Laravel", completed: false },
+  { id: "todo-3", name: "PHP", completed: false },
+]
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App subject="FistAPI & React"/>
+    <App subject="FistAPI & React" tasks={ DATA }/>
   </React.StrictMode>
 );
 
