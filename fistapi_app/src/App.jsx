@@ -7,6 +7,8 @@ import Footer from "./compornents/Footer/footter";
 import AddTaskForm from "./compornents/From/AddTaskFrom";
 import Todo from "./compornents/List/Todo";
 
+import "./App.css";
+
 // フィルタ定義
 const FILTER_MAP = {
   ALL: () => true,
@@ -51,23 +53,25 @@ function App(props) {
     );
 
 	return (
-		<div className="App stack-large">
+    <div className="App stack-large">
       <Navbar />
+        <div className="TodoApp">
+      
+          <h1>{ subject } Lesson!</h1>
 
-        <h1>{ subject } Lesson!</h1>
+          <AddTaskForm addTask={ addTask } />
 
-        <AddTaskForm addTask={ addTask } />
+          <div>ここに処理を書いていきます</div>
+          {data ? <div>{data.Hello}</div> : <button onClick={GetData}>データを取得</button>}
 
-        <div>ここに処理を書いていきます</div>
-        {data ? <div>{data.Hello}</div> : <button onClick={GetData}>データを取得</button>}
+          <ul
+            role="list"
+            className="todo-list stack-large stack-exception"
+            aria-labelledby="list-hedding">
+              { taskList }
+          </ul>
 
-        <ul
-          role="list"
-          className="todo-list stack-large stack-exception"
-          aria-labelledby="list-hedding">
-            { taskList }
-        </ul>
-
+        </div>
       <Footer />
 		</div>
 	);
