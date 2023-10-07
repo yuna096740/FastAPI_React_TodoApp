@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { nanoid } from "nanoid";
-import Footer from "./compornents/Footer/footter";
+
 import Navbar from "./compornents/Navbar/nav";
+import Footer from "./compornents/Footer/footter";
 import AddTaskForm from "./compornents/From/AddTaskFrom";
+// import Todo from "./compornents/List/Todo";
 
 function App(props) {
 	const [data, setData] = React.useState();
@@ -21,7 +23,7 @@ function App(props) {
   // Taskの追加処理
   function addTask(name) {
     const newTask = { id: `todo-${ nanoid() }`, name, completed: false};
-    // スプレッド演算子(...)
+    // スプレッド演算子(今ある配列に代入)
     setTasks([...tasks, newTask]);
   }
 
@@ -31,7 +33,7 @@ function App(props) {
 
         <h1>{ subject } Lesson!</h1>
 
-        <AddTaskForm />
+        <AddTaskForm addTask={ addTask } />
 
         <div>ここに処理を書いていきます</div>
         {data ? <div>{data.Hello}</div> : <button onClick={GetData}>データを取得</button>}
