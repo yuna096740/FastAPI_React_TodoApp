@@ -5,7 +5,7 @@ import { nanoid } from "nanoid";
 import Navbar from "./compornents/Navbar/nav";
 import Footer from "./compornents/Footer/footter";
 import AddTaskForm from "./compornents/From/AddTaskFrom";
-// import Todo from "./compornents/List/Todo";
+import Todo from "./compornents/List/Todo";
 
 function App(props) {
 	const [data, setData] = React.useState();
