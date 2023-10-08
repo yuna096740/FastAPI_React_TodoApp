@@ -1,5 +1,5 @@
 .nav {
-  background-color: #888;
+  background-color: #666;
   height: 80px;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .nav li:hover {
-  color: #676161;
+  color: #c4c0c0;
 }
 
 @media screen and (max-width: 640px) {

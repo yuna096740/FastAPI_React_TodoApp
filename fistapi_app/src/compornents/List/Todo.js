@@ -22,7 +22,7 @@ export default function Todo(props) {
     <form className="stack-small" onSubmit={ handleSubmit }>
       <div className="form-group">
         <label className="todo-label" htmlFor={ props.id }>
-          Editing Tasks <b>" { props.name } "</b>
+          Editing Tasks <b>" { props.name } " </b>
         </label>
 
         <input
@@ -31,7 +31,6 @@ export default function Todo(props) {
           type="text"
           value={ newName }
           onChange={ handleChange }
-          // ref={ editingFieldRef }
         />
       </div>
 
@@ -70,7 +69,6 @@ export default function Todo(props) {
           type="button"
           className="btn"
           onClick={ () => setEditing(true) }
-          // ref={ editButtonRef }
         >
             Edit <span className="visually-hidden">{ props.name }</span>
         </button>
