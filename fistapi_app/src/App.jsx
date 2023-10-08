@@ -46,11 +46,33 @@ function App(props) {
         name={ task.name }
         completed={ task.completed }
         key={ task.id }
-        //toggleTaskCompleted={ toggleTaskCompleted }
+        toggleTaskCompleted={ toggleTaskCompleted }
         //deleteTask={ deleteTask }
-        //editTask={ editTask }
+        editTask={ editTask }
       />
     );
+
+  // Task checked or not & Taskの更新処理
+  function toggleTaskCompleted(id) {
+    const updatedTasks = tasks.map((task) => {
+      if (id === task.id) {
+        return { ...task, completed: !task.completed };
+      }
+      return task;
+    });
+    setTasks(updatedTasks);
+  }
+
+  // Taskの編集処理
+  function editTask(id, newName) {
+    const editTaskList = tasks.map((task) => {
+      if (id === task.id) {
+        return { ...task, name: newName };
+      }
+      return task;
+    });
+    setTasks(editTaskList);
+  }
 
 	return (
     <div className="App stack-large">

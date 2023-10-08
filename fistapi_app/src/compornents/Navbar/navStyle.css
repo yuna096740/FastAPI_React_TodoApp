@@ -13,19 +13,18 @@
 
 .nav li {
   text-decoration: none;
-  color: #444;
+  color: #f5f1f1;
   padding: 20px 10px;
   display: block;
   font-size: large;
 }
 
 .nav li:hover {
-  color: #fff;
+  color: #676161;
 }
 
 @media screen and (max-width: 640px) {
   .nav {
-    background-color: #0183a0;
     height: 150px;
   }
 
@@ -36,5 +35,6 @@
 
   .nav li {
     border-bottom: solid 1px #fff;
+    padding: 10px;
   }
 }
