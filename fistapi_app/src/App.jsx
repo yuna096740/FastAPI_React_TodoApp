@@ -47,7 +47,7 @@ function App(props) {
         completed={ task.completed }
         key={ task.id }
         toggleTaskCompleted={ toggleTaskCompleted }
-        //deleteTask={ deleteTask }
+        deleteTask={ deleteTask }
         editTask={ editTask }
       />
     );
@@ -72,6 +72,15 @@ function App(props) {
       return task;
     });
     setTasks(editTaskList);
+  }
+
+  // Taskの削除処理
+  function deleteTask(id) {
+    const confirm = window.confirm("Are you Sure?");
+    if (confirm) {
+      const remainingTasks = tasks.filter((task) => id !== task.id);
+      setTasks(remainingTasks);
+    };
   }
 
 	return (
