@@ -5,16 +5,18 @@ import { nanoid } from "nanoid";
 import Navbar from "./compornents/Navbar/nav";
 import Footer from "./compornents/Footer/footter";
 import AddTaskForm from "./compornents/From/AddTaskFrom";
+import FilterButton from "./compornents/Btn/FilterButton";
 import Todo from "./compornents/List/Todo";
 
 import "./App.css";
 
 // フィルタ定義
 const FILTER_MAP = {
-  ALL: () => true,
-  DO: (task) => !task.completed,
-  DONE: (task) => task.completed,
+  All: () => true,
+  Active: (task) => !task.completed,
+  Completed: (task) => task.completed,
 };
+const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 function App(props) {
 	const [data, setData] = React.useState();
@@ -36,14 +38,15 @@ function App(props) {
     setTasks([...tasks, newTask]);
   }
 
-  const [filter, setFilter] = useState("ALL");
+  const [filter, setFilter] = useState("All");
 
   const taskList = tasks
+    // statusのフィルタリング
     .filter(FILTER_MAP[filter])
-    .map((task) =>
-      <Todo
-        id={ task.id }
-        name={ task.name }
+    .map((task) => 
+      <Todo 
+        id ={ task.id } 
+        name={ task.name } 
         completed={ task.completed }
         key={ task.id }
         toggleTaskCompleted={ toggleTaskCompleted }
@@ -51,6 +54,16 @@ function App(props) {
         editTask={ editTask }
       />
     );
+
+  // change aria-pressed
+  const filterList = FILTER_NAMES.map((name) => (
+    <FilterButton
+      key={ name }
+      name={ name }
+      isPressed={ name === filter }
+      setFilter={ setFilter }
+    />
+  ));
 
   // Task checked or not & Taskの更新処理
   function toggleTaskCompleted(id) {
@@ -91,6 +104,10 @@ function App(props) {
           <h1>{ subject } Lesson!</h1>
 
           <AddTaskForm addTask={ addTask } />
+
+          <div className="filters btn-group stack-exception">
+            { filterList }
+          </div>
 
           <div>ここに処理を書いていきます</div>
           {data ? <div>{data.Hello}</div> : <button onClick={GetData}>データを取得</button>}
