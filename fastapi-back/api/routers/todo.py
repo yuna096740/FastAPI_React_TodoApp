@@ -14,11 +14,11 @@ async def create_todo(todo_body: todo_schema.TodoCreate):
     return todo_schema.TodoCreateResponse(id=1, **todo_body.dict())
 
 
-@router.put("/todos/{todo_id}")
-async def update_todo():
-    pass
+@router.put("/todos/{todo_id}", response_model=todo_schema.TodoCreateResponse)
+async def update_todo(todo_id: int, todo_body: todo_schema.TodoCreate):
+    return todo_schema.TodoCreateResponse(id=todo_id, **todo_body.dict())
 
 
-@router.delete("/todos/{todo_id}")
-async def delete_todo():
-    pass
+@router.delete("/todos/{todo_id}", response_description=None)
+async def delete_todo(todo_id: int):
+    return 
