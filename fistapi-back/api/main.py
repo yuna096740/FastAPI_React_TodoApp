@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from api.routers import todo, done
 
 app = FastAPI()
 
@@ -15,6 +16,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/hello")
-async def Hello():
-    return {"message":"Hello World!"}
+app.include_router(todo.router)
+app.include_router(done.router)
