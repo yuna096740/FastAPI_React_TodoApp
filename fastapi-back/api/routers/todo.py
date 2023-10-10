@@ -1,6 +1,10 @@
 from typing import List
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from sqlalchemy.ext.asyncio import AsyncSession
 import api.schemas.todo as todo_schema
+
+import api.cruds.todo as todo_crud
+from api.db import get_db
 
 router = APIRouter()
 
@@ -10,8 +14,10 @@ async def list_todos():
 
 
 @router.post("/todos", response_model=todo_schema.TodoCreateResponse)
-async def create_todo(todo_body: todo_schema.TodoCreate):
-    return todo_schema.TodoCreateResponse(id=1, **todo_body.dict())
+async def create_todo(
+    todo_body: todo_schema.TodoCreate, db: AsyncSession = Depends(get_db)
+):
+    return await todo_crud.create_todo(db, todo_body)
 
 
 @router.put("/todos/{todo_id}", response_model=todo_schema.TodoCreateResponse)
