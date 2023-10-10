@@ -19,6 +19,6 @@ async def update_todo(todo_id: int, todo_body: todo_schema.TodoCreate):
     return todo_schema.TodoCreateResponse(id=todo_id, **todo_body.dict())
 
 
-@router.delete("/todos/{todo_id}", response_description=None)
+@router.delete("/todos/{todo_id}", response_model=None)
 async def delete_todo(todo_id: int):
     return 
