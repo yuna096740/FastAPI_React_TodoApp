@@ -1,4 +1,4 @@
-from sqlalchemy.ext.asynio import AsyncSession
+from sqlalchemy.ext.asyncio import AsyncSession
 
 import api.models.todo as todo_model
 import api.schemas.todo as todo_schema
