@@ -9,8 +9,8 @@ from api.db import get_db
 router = APIRouter()
 
 @router.get("/todos", response_model=List[todo_schema.Todo])
-async def list_todos():
-    return [todo_schema.Todo(id=1, title="todo test1", done=True)]
+async def list_todos(db: AsyncSession = Depends(get_db)):
+    return await todo_crud.get_todos_with_done(db)
 
 
 @router.post("/todos", response_model=todo_schema.TodoCreateResponse)
