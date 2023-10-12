@@ -1,5 +1,5 @@
 from typing import List
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 import api.schemas.todo as todo_schema
 
@@ -21,8 +21,14 @@ async def create_todo(
 
 
 @router.put("/todos/{todo_id}", response_model=todo_schema.TodoCreateResponse)
-async def update_todo(todo_id: int, todo_body: todo_schema.TodoCreate):
-    return todo_schema.TodoCreateResponse(id=todo_id, **todo_body.dict())
+async def update_todo(
+    todo_id: int, todo_body: todo_schema.TodoCreate, db: AsyncSession = Depends(get_db)
+):
+    todo = await todo_crud.get_todo(db, todo_id=todo_id)
+    if todo is None:
+        raise HTTPException(status_code=404, detail="Todo is not found")
+    
+    return await todo_crud.update_todo(db, todo_body, original=todo)
 
 
 @router.delete("/todos/{todo_id}", response_model=None)
