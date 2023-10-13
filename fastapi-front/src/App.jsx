@@ -7,6 +7,7 @@ import Footer from "./compornents/Footer/footter";
 import AddTaskForm from "./compornents/From/AddTaskFrom";
 import FilterButton from "./compornents/Btn/FilterButton";
 import Todo from "./compornents/List/Todo";
+import Sample from "./test";
 
 import "./App.css";
 
@@ -19,13 +20,6 @@ const FILTER_MAP = {
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 function App(props) {
-	const [data, setData] = React.useState();
-	const url = "http://127.0.0.1:8000";
-	const GetData = () => {
-		axios.get(url).then((res) => {
-			setData(res.data);
-		});
-	};
 
   // title
   const subject = props.subject;
@@ -109,8 +103,7 @@ function App(props) {
             { filterList }
           </div>
 
-          <div>ここに処理を書いていきます</div>
-          {data ? <div>{data.Hello}</div> : <button onClick={GetData}>データを取得</button>}
+          <Sample />
 
           <ul
             role="list"
