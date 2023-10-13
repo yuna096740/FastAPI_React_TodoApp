@@ -13,7 +13,7 @@ export default function Todo(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.editTask(props.id, newName);
+    props.editTodo(props.id, newName);
     setNewName("");
     setEditing(false);
   }
@@ -22,7 +22,7 @@ export default function Todo(props) {
     <form className="stack-small" onSubmit={ handleSubmit }>
       <div className="form-group">
         <label className="todo-label" htmlFor={ props.id }>
-          Editing Tasks <b>" { props.name } " </b>
+          Editing Todos <b>" { props.name } " </b>
         </label>
 
         <input
@@ -56,7 +56,7 @@ export default function Todo(props) {
           id={ props.id }
           type="checkbox"
           defaultChecked={ props.completed }
-          onChange={ () => props.toggleTaskCompleted(props.id) }
+          onChange={ () => props.toggleTodoCompleted(props.id) }
         />
 
         <label className="todo-label" htmlFor={ props.id }>
@@ -76,7 +76,7 @@ export default function Todo(props) {
         <button
           type="button"
           className="btn btn__danger"
-          onClick={ () => props.deleteTask(props.id) }>
+          onClick={ () => props.deleteTodo(props.id) }>
             Delete <span className="visually-hidden">{ props.name }</span>
         </button>
       </div>

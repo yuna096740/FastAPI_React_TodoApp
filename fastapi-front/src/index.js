@@ -14,7 +14,7 @@ const DATA = [
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App subject="FastAPI & React" tasks={ DATA }/>
+    <App subject="FastAPI & React" todos={ DATA }/>
   </React.StrictMode>
 );
 

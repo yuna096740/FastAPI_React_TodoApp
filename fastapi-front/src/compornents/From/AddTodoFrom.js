@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-function AddTaskForm(props) {
+function AddTodoForm(props) {
   const [name, setName] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault(); // デフォルトの送信動作を防ぐ
-    props.addTask(name);
+    props.addTodo(name);
     setName("");
   }
 
@@ -32,11 +32,11 @@ function AddTaskForm(props) {
       />
 
       <button type="submit" className="btn btn__primary btn__lg">
-        Add Task
+        Add Todo
       </button>
 
     </form>
   )
 }
 
-export default AddTaskForm;
+export default AddTodoForm;
