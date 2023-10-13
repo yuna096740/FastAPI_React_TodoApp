@@ -46,3 +46,8 @@ async def update_todo(
     await db.commit()
     await db.refresh(original)
     return original
+
+
+async def delete_todo(db: AsyncSession, original: todo_model.Todo) -> None:
+    await db.delete(original)
+    await db.commit()

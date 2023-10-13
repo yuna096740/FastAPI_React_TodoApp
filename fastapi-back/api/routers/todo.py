@@ -32,5 +32,9 @@ async def update_todo(
 
 
 @router.delete("/todos/{todo_id}", response_model=None)
-async def delete_todo(todo_id: int):
-    return 
+async def delete_todo(todo_id: int, db: AsyncSession = Depends(get_db)):
+    todo = await todo_crud.get_todo(db, todo_id=todo_id)
+    if todo is None:
+        raise HTTPException(status_code=404, detail="Todo is not found")
+    
+    return await todo_crud.delete_todo(db, original=todo)
