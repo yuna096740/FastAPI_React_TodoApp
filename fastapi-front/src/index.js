@@ -5,10 +5,10 @@ import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
 const DATA = [
-  { id: "todo-0", name: "FastAPI", completed: true },
-  { id: "todo-1", name: "React", completed: false },
-  { id: "todo-2", name: "Laravel", completed: false },
-  { id: "todo-3", name: "PHP", completed: false },
+  { id: "todo-0", title: "FastAPI", completed: true },
+  { id: "todo-1", title: "React", completed: false },
+  { id: "todo-2", title: "Laravel", completed: false },
+  { id: "todo-3", title: "PHP", completed: false },
 ]
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -5,16 +5,16 @@ import "./checkbox.css"
 export default function Todo(props) {
 
   const [isEditing, setEditing] = useState(false);
-  const [newName, setNewName] = useState("");
+  const [newTitle, setNewTitle] = useState("");
 
   function handleChange(e) {
-    setNewName(e.target.value);
+    setNewTitle(e.target.value);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.editTodo(props.id, newName);
-    setNewName("");
+    props.editTodo(props.id, newTitle);
+    setNewTitle("");
     setEditing(false);
   }
 
@@ -22,14 +22,14 @@ export default function Todo(props) {
     <form className="stack-small" onSubmit={ handleSubmit }>
       <div className="form-group">
         <label className="todo-label" htmlFor={ props.id }>
-          Editing Todos <b>" { props.name } " </b>
+          Editing Todos <b>" { props.title } " </b>
         </label>
 
         <input
           id={ props.id }
           className="todo-text"
           type="text"
-          value={ newName }
+          value={ newTitle }
           onChange={ handleChange }
         />
       </div>
@@ -43,7 +43,7 @@ export default function Todo(props) {
         </button>
 
         <button type="submit" className="btn btn__primary todo-edit">
-          Save <span className="visually-hidden">New Name is { props.name }</span>
+          Save <span className="visually-hidden">New Title is { props.title }</span>
         </button>
       </div>
     </form>
@@ -60,7 +60,7 @@ export default function Todo(props) {
         />
 
         <label className="todo-label" htmlFor={ props.id }>
-          { props.name }
+          { props.title }
         </label>
       </div>
 
@@ -70,14 +70,14 @@ export default function Todo(props) {
           className="btn"
           onClick={ () => setEditing(true) }
         >
-            Edit <span className="visually-hidden">{ props.name }</span>
+            Edit <span className="visually-hidden">{ props.title }</span>
         </button>
 
         <button
           type="button"
           className="btn btn__danger"
           onClick={ () => props.deleteTodo(props.id) }>
-            Delete <span className="visually-hidden">{ props.name }</span>
+            Delete <span className="visually-hidden">{ props.title }</span>
         </button>
       </div>
     </div>

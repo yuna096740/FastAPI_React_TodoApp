@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
 function AddTodoForm(props) {
-  const [name, setName] = useState("");
+  const [title, setTitle] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault(); // デフォルトの送信動作を防ぐ
-    props.addTodo(name);
-    setName("");
+    props.addTodo(title);
+    setTitle("");
   }
 
   function handleChange(e) {
-    setName(e.target.value);
+    setTitle(e.target.value);
   }
 
   return (
@@ -27,7 +27,7 @@ function AddTodoForm(props) {
         className="input input__lg"
         name="text"
         autoComplete="off"
-        value={ name }
+        value={ title }
         onChange={ handleChange }
       />
 

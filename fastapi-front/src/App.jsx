@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { nanoid } from "nanoid";
 
@@ -17,27 +17,13 @@ const FILTER_MAP = {
   Active: (todo) => !todo.completed,
   Completed: (todo) => todo.completed,
 };
-const FILTER_NAMES = Object.keys(FILTER_MAP);
+const FILTER_TITLES = Object.keys(FILTER_MAP);
 
 function App(props) {
 
   // title
   const subject = props.subject;
   const [todos, setTodos] = useState(props.todos)
-
-  // Todoの追加処理
-  function addTodo(name) {
-    const newTodo = { id: `todo-${ nanoid() }`, name, completed: false};
-    axios
-      .post("http://localhost:8000/todos", newTodo)
-      .then((response) => {
-        setTodos([...todos, response.data]); // スプレッド演算子(今ある配列に代入)
-      })
-      .catch((error) => {
-        console.error("error:", error);
-      });
-  }
-
   const [filter, setFilter] = useState("All");
 
   const todoList = todos
@@ -46,7 +32,7 @@ function App(props) {
     .map((todo) => 
       <Todo 
         id ={ todo.id } 
-        name={ todo.name } 
+        name={ todo.title } 
         completed={ todo.completed }
         key={ todo.id }
         toggleTodoCompleted={ toggleTodoCompleted }
@@ -55,12 +41,38 @@ function App(props) {
       />
     );
 
+  useEffect(() => {
+    // FastAPIのエンドポイントからデータを取得
+    axios
+      .get("http://localhost:8000/todos")
+      .then((response) => {
+        setTodos(response.data);
+      })
+      .catch((error) => {
+        console.error("error:", error);
+      });
+  }, []);
+
+  // Todoの追加処理
+  function addTodo(title) {
+    const newTodo = { id: `todo-${ nanoid() }`, title, completed: false};
+    axios
+      .post("http://localhost:8000/todos", newTodo)
+      .then((response) => {
+        console.log("success");
+        setTodos([...todos, response.data]); // スプレッド演算子(今ある配列に代入)
+      })
+      .catch((error) => {
+        console.error("error:", error);
+      });
+  }
+
   // change aria-pressed
-  const filterList = FILTER_NAMES.map((name) => (
+  const filterList = FILTER_TITLES.map((title) => (
     <FilterButton
-      key={ name }
-      name={ name }
-      isPressed={ name === filter }
+      key={ title }
+      name={ title }
+      isPressed={ title === filter }
       setFilter={ setFilter }
     />
   ));
@@ -77,10 +89,10 @@ function App(props) {
   }
 
   // Todoの編集処理
-  function editTodo(id, newName) {
+  function editTodo(id, newTitle) {
     const editTodoList = todos.map((todo) => {
       if (id === todo.id) {
-        return { ...todo, name: newName };
+        return { ...todo, title: newTitle };
       }
       return todo;
     });
