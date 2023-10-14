@@ -32,7 +32,7 @@ function App(props) {
     .map((todo) => 
       <Todo 
         id ={ todo.id } 
-        name={ todo.title } 
+        title={ todo.title }
         completed={ todo.completed }
         key={ todo.id }
         toggleTodoCompleted={ toggleTodoCompleted }
@@ -71,7 +71,7 @@ function App(props) {
   const filterList = FILTER_TITLES.map((title) => (
     <FilterButton
       key={ title }
-      name={ title }
+      title={ title }
       isPressed={ title === filter }
       setFilter={ setFilter }
     />
