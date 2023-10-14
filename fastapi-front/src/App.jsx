@@ -114,8 +114,17 @@ function App(props) {
   function deleteTodo(id) {
     const confirm = window.confirm("Are you Sure?");
     if (confirm) {
-      const remainingTodos = todos.filter((todo) => id !== todo.id);
-      setTodos(remainingTodos);
+      // FastAPIバックエンドに削除リクエストを送信
+      axios
+        .delete(`http://localhost:8000/todos/${id}`)
+        .then((response) => {
+          console.log("Success: Todo deleted");
+          const remainingTodos = todos.filter((todo) => id !== todo.id);
+          setTodos(remainingTodos);
+        })
+        .catch((error) => {
+          console.error("error:", error);
+        });
     };
   }
 
@@ -132,7 +141,7 @@ function App(props) {
             { filterList }
           </div>
 
-          <Sample />
+          {/* <Sample /> */}
 
           <ul
             role="list"
