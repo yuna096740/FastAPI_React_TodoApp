@@ -77,7 +77,7 @@ function App(props) {
     />
   ));
 
-  // Todo checked or not & Todoの更新処理
+  // Todo done更新処理
   function toggleTodoCompleted(id) {
     const updatedTodos = todos.map((todo) => {
       if (id === todo.id) {
@@ -97,6 +97,17 @@ function App(props) {
       return todo;
     });
     setTodos(editTodoList);
+
+    // FastAPIバックエンドに更新を送信
+    const editedTodo = editTodoList.find((todo) => todo.id === id);
+    axios
+      .put(`http://localhost:8000/todos/${id}`, editedTodo)
+      .then((response) => {
+        console.log("Success", response.data);
+      })
+      .catch((error) => {
+        console.error("error:", error);
+      });
   }
 
   // Todoの削除処理
