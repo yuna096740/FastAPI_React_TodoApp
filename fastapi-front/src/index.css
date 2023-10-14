@@ -65,7 +65,7 @@ input {
   overflow: visible;
 }
 input[type="text"] {
-  border-radius: 10px;
+  border-radius: 6px;
 }
 body {
   width: 100%;
