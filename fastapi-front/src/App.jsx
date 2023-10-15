@@ -14,8 +14,8 @@ import "./App.css";
 // フィルタ定義
 const FILTER_MAP = {
   All: () => true,
-  Active: (todo) => !todo.completed,
-  Completed: (todo) => todo.completed,
+  Active: (todo) => !todo.done,
+  Done: (todo) => todo.done,
 };
 const FILTER_TITLES = Object.keys(FILTER_MAP);
 
@@ -25,21 +25,6 @@ function App(props) {
   const subject = props.subject;
   const [todos, setTodos] = useState(props.todos)
   const [filter, setFilter] = useState("All");
-
-  const todoList = todos
-    // statusのフィルタリング
-    .filter(FILTER_MAP[filter])
-    .map((todo) => 
-      <Todo 
-        id ={ todo.id } 
-        title={ todo.title }
-        completed={ todo.completed }
-        key={ todo.id }
-        toggleTodoCompleted={ toggleTodoCompleted }
-        deleteTodo={ deleteTodo }
-        editTodo={ editTodo }
-      />
-    );
 
   useEffect(() => {
     // FastAPIのエンドポイントからデータを取得
@@ -53,9 +38,24 @@ function App(props) {
       });
   }, []);
 
+  const todoList = todos
+    // statusのフィルタリング
+    .filter(FILTER_MAP[filter])
+    .map((todo) => 
+      <Todo 
+        id ={ todo.id } 
+        title={ todo.title }
+        done={ todo.done }
+        key={ todo.id }
+        toggleTodoDone={ toggleTodoDone }
+        deleteTodo={ deleteTodo }
+        editTodo={ editTodo }
+      />
+    );
+
   // Todoの追加処理
   function addTodo(title) {
-    const newTodo = { id: `todo-${ nanoid() }`, title, completed: false};
+    const newTodo = { id: `todo-${ nanoid() }`, title, done: false};
     axios
       .post("http://localhost:8000/todos", newTodo)
       .then((response) => {
@@ -83,7 +83,7 @@ function App(props) {
     axios
       .put(`http://localhost:8000/todos/${id}/done`)
       .then((response) => {
-        console.log("Success", response.data);
+        console.log("markSuccess", response.data);
       })
       .catch((error) => {
         console.error("error:", error);
@@ -96,7 +96,7 @@ function App(props) {
     axios
       .delete(`http://localhost:8000/todos/${id}/done`)
       .then((response) => {
-        console.log("Success", response.data);
+        console.log("unmarkSuccess", response.data);
       })
       .catch((error) => {
         console.error("error:", error);
@@ -104,18 +104,18 @@ function App(props) {
   }
   
   // Todo done更新処理
-  function toggleTodoCompleted(id) {
+  function toggleTodoDone(id) {
     const updatedTodos = todos.map((todo) => {
       if (id === todo.id) {
         // ToDoの完了状態をトグル
-        return { ...todo, completed: !todo.completed };
+        return { ...todo, done: !todo.done };
       }
       return todo;
     });
     setTodos(updatedTodos);
   
     // FastAPIバックエンドに更新を送信
-    if (updatedTodos.find((todo) => todo.id === id).completed) {
+    if (updatedTodos.find((todo) => todo.id === id).done) {
       markTodoAsDone(id);
     } else {
       unmarkTodoAsDone(id);
