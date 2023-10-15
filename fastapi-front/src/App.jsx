@@ -7,8 +7,7 @@ import Footer from "./compornents/Footer/footter";
 import AddTodoForm from "./compornents/From/AddTodoFrom";
 import FilterButton from "./compornents/Btn/FilterButton";
 import Todo from "./compornents/List/Todo";
-import Sample from "./test";
-
+import { getTodos } from "./compornents/api";
 import "./App.css";
 
 // フィルタ定義
