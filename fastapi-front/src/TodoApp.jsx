@@ -159,30 +159,26 @@ function TodoApp(props) {
   }
 
 	return (
-    <div className="App stack-large">
-      
-      <div className="TodoApp">
-    
-        <h1>{ subject } Lesson!</h1>
+    <div className="TodoApp">
+  
+      <h1>{ subject } Lesson!</h1>
 
-        <AddTodoForm addTodo={ addTodo } />
+      <AddTodoForm addTodo={ addTodo } />
 
-        <div className="filters btn-group stack-exception">
-          { filterList }
-        </div>
-
-        {/* <Sample /> */}
-
-        <ul
-          role="list"
-          className="todo-list stack-large stack-exception"
-          aria-labelledby="list-hedding">
-            { todoList }
-        </ul>
-
+      <div className="filters btn-group stack-exception">
+        { filterList }
       </div>
-      
-		</div>
+
+      {/* <Sample /> */}
+
+      <ul
+        role="list"
+        className="todo-list stack-large stack-exception"
+        aria-labelledby="list-hedding">
+          { todoList }
+      </ul>
+
+    </div>
 	);
 }
 

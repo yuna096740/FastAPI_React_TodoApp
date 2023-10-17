@@ -11,7 +11,7 @@
   height: 60px;
 }
 
-.nav li {
+.nav a {
   text-decoration: none;
   color: #f5f1f1;
   padding: 20px 10px;
@@ -19,7 +19,7 @@
   font-size: large;
 }
 
-.nav li:hover {
+.nav a:hover {
   color: #c4c0c0;
 }
 

@@ -18,15 +18,14 @@ function App() {
     <div className="App stack-large">
       <BrowserRouter>
         <Navbar />
+        
+          <Routes>
+            <Route exact path="/" element={ <Home /> } />
+            <Route exact path="/about" element={ <About /> } />
+            <Route exact path="/todo" element={ <TodoApp  subject="FastAPI & React" todos={ DATA } /> } />
+          </Routes>
 
         <Footer />
-
-        <Routes>
-          <Route exact path="/" element={ <Home /> } />
-          <Route exact path="/about" element={ <About /> } />
-          <Route exact path="/todo" element={ <TodoApp  subject="FastAPI & React" todos={ DATA } /> } />
-        </Routes>
-
       </BrowserRouter>
     </div>
   );

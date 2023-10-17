@@ -8,4 +8,5 @@
   position: sticky;
   top: 100vh;
   font-size: small;
+  z-index: 2;
 }
