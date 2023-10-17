@@ -1,7 +1,7 @@
-import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
-import { Home } from "./Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Home } from "./Home"; 
 import { About } from "./About";
-import TodoApp from "./TodoApp.jsx";
+import TodoApp from "./TodoApp";
 import Navbar from "./compornents/Navbar/nav";
 import Footer from "./compornents/Footer/footter";
 import "./App.css";
@@ -15,28 +15,19 @@ const DATA = [
 
 function App() {
   return (
-    <div className="Todo-app stack-large">
-      <Navbar />
-
+    <div className="App stack-large">
       <BrowserRouter>
-        <div className="App">
-          <Link to="/">Home</Link>
-          <br />
-          <Link to="/about">About</Link>
-          <br />
-          <Link to="/todo">Todo</Link>
-          <br />
+        <Navbar />
 
-          <Routes>
-            <Route exact path="/" element={ <Home /> } />
-            <Route exact path="/about" element={ <About /> } />
-            <Route exact path="/todo" element={ <TodoApp  subject="FastAPI & React" todos={ DATA } /> } />
-          </Routes>
+        <Footer />
 
-        </div>
+        <Routes>
+          <Route exact path="/" element={ <Home /> } />
+          <Route exact path="/about" element={ <About /> } />
+          <Route exact path="/todo" element={ <TodoApp  subject="FastAPI & React" todos={ DATA } /> } />
+        </Routes>
+
       </BrowserRouter>
-
-      <Footer />
     </div>
   );
 }
