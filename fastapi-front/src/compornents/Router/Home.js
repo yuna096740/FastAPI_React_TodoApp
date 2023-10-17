@@ -1,8 +1,11 @@
+import SlideHome from "../Home/slideHome";
 
-export const Home = () => {
+export default function Home() {
   return (
     <div className="Home">
       <h1>Home</h1>
+      <SlideHome />
+
     </div>
   );
 };
