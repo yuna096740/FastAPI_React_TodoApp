@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { nanoid } from "nanoid";
 
-import AddTodoForm from "./compornents/From/AddTodoFrom";
-import FilterButton from "./compornents/Btn/FilterButton";
-import Todo from "./compornents/List/Todo";
-// import { getTodos } from "./compornents/api";
+import AddTodoForm from "../From/AddTodoFrom";
+import FilterButton from "../Btn/FilterButton";
+import Todo from "../List/Todo";
+
 
 // フィルタ定義
 const FILTER_MAP = {
@@ -169,7 +169,7 @@ function TodoApp(props) {
         { filterList }
       </div>
 
-      {/* <Sample /> */}
+      
 
       <ul
         role="list"
