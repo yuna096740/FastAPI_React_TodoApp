@@ -1,4 +1,5 @@
 import SlideHome from "../Home/slideHome";
+import "../Home/home.css";
 
 export default function Home() {
   return (
