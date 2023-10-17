@@ -2,13 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { nanoid } from "nanoid";
 
-import Navbar from "./compornents/Navbar/nav";
-import Footer from "./compornents/Footer/footter";
 import AddTodoForm from "./compornents/From/AddTodoFrom";
 import FilterButton from "./compornents/Btn/FilterButton";
 import Todo from "./compornents/List/Todo";
-import { getTodos } from "./compornents/api";
-import "./App.css";
+// import { getTodos } from "./compornents/api";
 
 // フィルタ定義
 const FILTER_MAP = {
@@ -163,28 +160,28 @@ function TodoApp(props) {
 
 	return (
     <div className="App stack-large">
-      <Navbar />
-        <div className="TodoApp">
       
-          <h1>{ subject } Lesson!</h1>
+      <div className="TodoApp">
+    
+        <h1>{ subject } Lesson!</h1>
 
-          <AddTodoForm addTodo={ addTodo } />
+        <AddTodoForm addTodo={ addTodo } />
 
-          <div className="filters btn-group stack-exception">
-            { filterList }
-          </div>
-
-          {/* <Sample /> */}
-
-          <ul
-            role="list"
-            className="todo-list stack-large stack-exception"
-            aria-labelledby="list-hedding">
-              { todoList }
-          </ul>
-
+        <div className="filters btn-group stack-exception">
+          { filterList }
         </div>
-      <Footer />
+
+        {/* <Sample /> */}
+
+        <ul
+          role="list"
+          className="todo-list stack-large stack-exception"
+          aria-labelledby="list-hedding">
+            { todoList }
+        </ul>
+
+      </div>
+      
 		</div>
 	);
 }
