@@ -1,0 +1,26 @@
+.Poster-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 40px 100px;
+}
+
+.PosterHome {
+  flex-basis: calc(33.33% - 50px);
+  margin: 20px auto;
+}
+
+.PosterHome img {
+  width: 100%;
+  padding: 10px;
+  background-color: #848080;
+}
+
+.poster-title {
+  font-size: 15px;
+  line-height: 0.05;
+}
+
+.poster-date {
+  font-size: 12px;
+  color: #848080;
+}

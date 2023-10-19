@@ -28,14 +28,14 @@ export default function SlideHome() {
         className="mySwiper"
       >
         <SwiperSlide><p>Slide 1</p><img src={ pic } alt="picture"></img></SwiperSlide>
-        <SwiperSlide><p>Slide 2</p></SwiperSlide>
-        <SwiperSlide><p>Slide 3</p></SwiperSlide>
-        <SwiperSlide><p>Slide 4</p></SwiperSlide>
-        <SwiperSlide><p>Slide 5</p></SwiperSlide>
-        <SwiperSlide><p>Slide 6</p></SwiperSlide>
-        <SwiperSlide><p>Slide 7</p></SwiperSlide>
-        <SwiperSlide><p>Slide 8</p></SwiperSlide>
-        <SwiperSlide><p>Slide 9</p></SwiperSlide>
+        <SwiperSlide><p>Slide 2</p><img src={ pic } alt="picture"></img></SwiperSlide>
+        <SwiperSlide><p>Slide 3</p><img src={ pic } alt="picture"></img></SwiperSlide>
+        <SwiperSlide><p>Slide 4</p><img src={ pic } alt="picture"></img></SwiperSlide>
+        <SwiperSlide><p>Slide 5</p><img src={ pic } alt="picture"></img></SwiperSlide>
+        <SwiperSlide><p>Slide 6</p><img src={ pic } alt="picture"></img></SwiperSlide>
+        <SwiperSlide><p>Slide 7</p><img src={ pic } alt="picture"></img></SwiperSlide>
+        <SwiperSlide><p>Slide 8</p><img src={ pic } alt="picture"></img></SwiperSlide>
+        <SwiperSlide><p>Slide 9</p><img src={ pic } alt="picture"></img></SwiperSlide>
       </Swiper>
     </div>
   );
