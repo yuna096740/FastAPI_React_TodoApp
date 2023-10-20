@@ -3,8 +3,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from api.routers import todo, done
 from pydantic import BaseModel
 
+from fastapi import Depends, FastAPI
+from fastapi.security import OAuth2PasswordBearer
+
 app = FastAPI()
 
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 app.add_middleware(
     CORSMiddleware,
@@ -17,17 +21,6 @@ app.add_middleware(
 app.include_router(todo.router)
 app.include_router(done.router)
 
-class TestParam(BaseModel):
-    param1 : str
-    param2 : str
-    
-# curl http://localhost:8000/
-@app.get("/")
-def get_root():
-    return {"message": "fastapi sample"}
-
-# curl -X POST -H "Content-Type: application/json" -d '{"param1":"test1", "param2":"text2"}' http://localhost:8000/
-@app.post("/")
-def post_root(testParam : TestParam):
-    print(testParam)
-    return testParam
+@app.get("/items/")
+async def read_items(token: str = Depends(oauth2_scheme)):
+    return { "token": token }
