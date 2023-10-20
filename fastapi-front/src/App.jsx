@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import  Home  from "./compornents/Router/Home"; 
-import { About } from "./compornents/Router/About";
+import About from "./compornents/Router/About";
 import TodoApp from "./compornents/Router/TodoApp";
 import Navbar from "./compornents/Navbar/nav";
 import Footer from "./compornents/Footer/footter";
