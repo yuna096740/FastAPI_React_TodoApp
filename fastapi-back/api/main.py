@@ -1,14 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api.routers import todo, done
-from pydantic import BaseModel
 
+from typing import Annotated
 from fastapi import Depends, FastAPI
-from fastapi.security import OAuth2PasswordBearer
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
 app = FastAPI()
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+security = HTTPBasic()
 
 app.add_middleware(
     CORSMiddleware,
@@ -21,6 +21,6 @@ app.add_middleware(
 app.include_router(todo.router)
 app.include_router(done.router)
 
-@app.get("/items/")
-async def read_items(token: str = Depends(oauth2_scheme)):
-    return { "token": token }
+@app.get("/users/me")
+def read_current_user(credentials: Annotated[HTTPBasicCredentials, Depends(security)]):
+    return {"username": credentials.username, "password": credentials.password}
