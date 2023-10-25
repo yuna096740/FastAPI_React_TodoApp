@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import  Home  from "./compornents/Router/Home"; 
 import About from "./compornents/Router/About";
 import TodoApp from "./compornents/Router/TodoApp";
+import Auth from "./compornents/Router/Auth";
 import Navbar from "./compornents/Navbar/nav";
 import Footer from "./compornents/Footer/footter";
 import "./App.css";
@@ -24,6 +25,7 @@ function App() {
             <Route exact path="/" element={ <Home /> } />
             <Route exact path="/about" element={ <About /> } />
             <Route exact path="/todo" element={ <TodoApp  subject="FastAPI & React" todos={ DATA } /> } />
+            <Route exact path="/users" element={ <Auth /> } />
           </Routes>
 
         <Footer />
