@@ -6,7 +6,7 @@ function Auth() {
 
   const handleLogin = async (username, password) => {
     const base64Credentials = btoa(`${username}:${password}`);
-    const response = await fetch('users/me', {
+    const response = await fetch('/users/me', {
       method: 'GET',
       headers: {
         Authorization: `Basic ${base64Credentials}`,
