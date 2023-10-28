@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from api.routers import todo, done
+from api.routers import todo, done, user
 
 import secrets
 from typing import Annotated
@@ -18,6 +18,7 @@ app.add_middleware(
 )
 app.include_router(todo.router)
 app.include_router(done.router)
+app.include_router(user.router)
 
 security = HTTPBasic()
 

@@ -1,12 +1,12 @@
-from paalib.context import CryptContext
+from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 
-from api.models.user import user_models
+from api.models.user import User
 
 pwd_context = CryptContext(schemas=["bcrypt"], deprecated="auto")
 
 def get_user_by_email(db: Session, email: str):
-    return db.query(user_models).filter(user_models.User.email == email).first()
+    return db.query(User).filter(User.User.email == email).first()
 
 
 def verify_password(plain_password, hashed_password):
