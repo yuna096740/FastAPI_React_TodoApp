@@ -29,7 +29,7 @@ export default function Todo(props) {
           id={ props.id }
           className="todo-text"
           type="text"
-          value={ newTitle }
+          value={ props.title }
           onChange={ handleChange }
         />
       </div>

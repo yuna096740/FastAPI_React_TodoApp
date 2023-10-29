@@ -18,7 +18,7 @@ app.add_middleware(
 )
 app.include_router(todo.router)
 app.include_router(done.router)
-app.include_router(user.router)
+# app.include_router(user.router)
 
 security = HTTPBasic()
 
