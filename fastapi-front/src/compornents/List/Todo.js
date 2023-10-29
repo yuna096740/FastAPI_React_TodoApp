@@ -61,7 +61,6 @@ export default function Todo(props) {
 
         <label className="todo-label" htmlFor={ props.id }>
           { props.title }
-          { props.id }
         </label>
       </div>
 
