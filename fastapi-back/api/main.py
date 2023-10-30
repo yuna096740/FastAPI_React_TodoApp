@@ -1,6 +1,5 @@
-from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from api.routers import todo, done, user
+from api.routers import todo, done # user
 
 import secrets
 from typing import Annotated
