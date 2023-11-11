@@ -23,7 +23,7 @@ async def get_todos_with_done(db: AsyncSession) -> List[Tuple[int, str, bool]]:
             select(
                 todo_model.Todo.id,
                 todo_model.Todo.title,
-                todo_model.Todo.detail,
+                # todo_model.Todo.detail,
                 todo_model.Done.id.isnot(None).label("done"),
             ).outerjoin(todo_model.Done)
         )
